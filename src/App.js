@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
- 
+
 const DEFAULT_BRAND = {
   name: "BEST ARCHIVE",
   tagline: "Oversized silhouettes. Washed textures. Underground aesthetics.",
@@ -9,7 +9,7 @@ const DEFAULT_BRAND = {
   instagram: "https://instagram.com",
   shopeeStore: "https://shopee.tw",
 };
- 
+
 const DEFAULT_SIZES = {
   rows: ["LENGTH (cm)", "CHEST (cm)", "SHOULDER (cm)", "SLEEVE (cm)"],
   cols: ["M", "L", "XL", "2XL"],
@@ -20,20 +20,20 @@ const DEFAULT_SIZES = {
     "SLEEVE (cm)":   { M: 22, L: 23, XL: 24, "2XL": 25 },
   },
 };
- 
+
 const DEFAULT_PRODUCTS = [
   { id: 1, title: "BLACK OVERSIZED TEE",   price: "NT$ 1,280", tag: "BESTSELLER", colors: ["#111111","#ffffff","#334155"], img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop", shopeeUrl: "https://shopee.tw" },
   { id: 2, title: "VINTAGE STREET SHORTS", price: "NT$ 1,580", tag: "NEW DROP",   colors: ["#78716c","#1c1917"],           img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop", shopeeUrl: "https://shopee.tw" },
   { id: 3, title: "LIMITED GRAPHIC TEE",   price: "NT$ 1,480", tag: "LIMITED",    colors: ["#ffffff","#d4d4d4"],           img: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?q=80&w=1200&auto=format&fit=crop", shopeeUrl: "https://shopee.tw" },
 ];
- 
+
 const TAGS = ["BESTSELLER", "NEW DROP", "LIMITED", "SALE", "COMING SOON"];
- 
+
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
- 
+
   .sf-hero-bg { background-size: cover; background-position: center; background-attachment: fixed; }
   .sf-nav-link { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.2em; color:#aaa; cursor:pointer; transition:color .2s; background:none; border:none; }
   .sf-nav-link:hover { color:#fff; }
@@ -54,7 +54,7 @@ const CSS = `
   .sf-size-table td { padding:14px 24px; text-align:center; font-size:.9rem; color:#666; border-bottom:1px solid #111; font-weight:300; }
   .sf-size-table tr:hover td { color:#fff; background:#111; }
   .sf-footer-brand { font-size:clamp(3rem,10vw,8rem); letter-spacing:.06em; line-height:1; background:linear-gradient(180deg,#333 0%,#111 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
- 
+
   .adm-root { display:flex; height:100vh; font-family:'Inter',sans-serif; background:#0d0d0d; color:#e5e5e5; overflow:hidden; }
   .adm-sidebar { width:220px; flex-shrink:0; background:#111; border-right:1px solid #1e1e1e; display:flex; flex-direction:column; padding:24px 0; }
   .adm-logo { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:.2em; color:#fff; padding:0 24px 24px; border-bottom:1px solid #1e1e1e; margin-bottom:16px; }
@@ -87,7 +87,7 @@ const CSS = `
   .drop-zone { border:2px dashed #333; border-radius:8px; padding:32px 20px; text-align:center; cursor:pointer; background:#0d0d0d; transition:all .2s; }
   .drop-zone:hover, .drop-zone.dragging { border-color:#fff; background:rgba(255,255,255,.04); }
 `;
- 
+
 // ── Image Uploader ──────────────────────────────────────────────────────────
 function ImageUploader({ value, onChange, label = "圖片" }) {
   const [dragging, setDragging] = useState(false);
@@ -137,7 +137,7 @@ function ImageUploader({ value, onChange, label = "圖片" }) {
     </div>
   );
 }
- 
+
 // ── STOREFRONT ──────────────────────────────────────────────────────────────
 function Storefront({ brand, products, sizes }) {
   const [scrolled, setScrolled] = useState(false);
@@ -150,7 +150,7 @@ function Storefront({ brand, products, sizes }) {
   }, []);
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   const goShopee = (url) => window.open(url || brand.shopeeStore, "_blank");
- 
+
   return (
     <div style={{ fontFamily: "'Bebas Neue','Arial Black',sans-serif", background: "#0a0a0a", color: "#fff", minHeight: "100vh" }}>
       {/* NAV */}
@@ -162,14 +162,14 @@ function Storefront({ brand, products, sizes }) {
           ))}
         </div>
       </nav>
- 
+
       {/* TICKER */}
       <div style={{ background: "#fff", color: "#000", fontFamily: "'Bebas Neue',sans-serif", fontSize: ".85rem", letterSpacing: ".25em", padding: "10px 0", whiteSpace: "nowrap", overflow: "hidden" }}>
         <div className="sf-ticker-inner">
           {Array(6).fill(`★ ${brand.name} — NEW DROP 2026 — LIMITED EDITION — OVERSIZED — STREETWEAR — TOKYO × SEOUL `).join("")}
         </div>
       </div>
- 
+
       {/* HERO */}
       <section className="sf-hero-bg" style={{ backgroundImage: `url('${brand.heroImage}')`, minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", padding: "0 6vw", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 100%)" }} />
@@ -189,7 +189,7 @@ function Storefront({ brand, products, sizes }) {
           <span style={{ fontFamily: "'Inter',sans-serif", fontSize: ".6rem", letterSpacing: ".3em" }}>SCROLL</span>
         </div>
       </section>
- 
+
       {/* PRODUCTS */}
       <section id="drop" style={{ padding: "100px 6vw" }}>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 64, flexWrap: "wrap", gap: 16 }}>
@@ -224,7 +224,7 @@ function Storefront({ brand, products, sizes }) {
           ))}
         </div>
       </section>
- 
+
       {/* ABOUT */}
       <section id="about" style={{ padding: "100px 6vw", borderTop: "1px solid #1a1a1a", borderBottom: "1px solid #1a1a1a" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center", maxWidth: 1100, margin: "0 auto" }}>
@@ -236,7 +236,7 @@ function Storefront({ brand, products, sizes }) {
           <p style={{ fontFamily: "'Inter',sans-serif", fontWeight: 300, color: "#666", lineHeight: 2, fontSize: ".95rem" }}>{brand.description}</p>
         </div>
       </section>
- 
+
       {/* SIZE */}
       <section id="size" style={{ padding: "100px 6vw" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
@@ -258,7 +258,7 @@ function Storefront({ brand, products, sizes }) {
           <p style={{ fontFamily: "'Inter',sans-serif", fontSize: ".75rem", color: "#444", marginTop: 16, textAlign: "center" }}>All measurements in cm. Oversized fit — size down if preferred.</p>
         </div>
       </section>
- 
+
       {/* FOOTER */}
       <footer id="contact" style={{ padding: "80px 6vw 60px", borderTop: "1px solid #1a1a1a" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 40 }}>
@@ -275,7 +275,7 @@ function Storefront({ brand, products, sizes }) {
     </div>
   );
 }
- 
+
 // ── ADMIN: Brand ────────────────────────────────────────────────────────────
 function AdminBrand({ brand, setBrand, showToast }) {
   const [local, setLocal] = useState({ ...brand });
@@ -315,13 +315,13 @@ function AdminBrand({ brand, setBrand, showToast }) {
     </div>
   );
 }
- 
+
 // ── ADMIN: Products ─────────────────────────────────────────────────────────
 function AdminProducts({ products, setProducts, showToast }) {
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(null);
   const [newColor, setNewColor] = useState("#ffffff");
- 
+
   const openEdit = (p) => { setForm({ ...p, colors: [...(p.colors || [])] }); setEditing(p.id); };
   const openNew = () => { setForm({ id: Date.now(), title: "NEW PRODUCT", price: "NT$ 0", tag: "NEW DROP", colors: [], img: "", shopeeUrl: "" }); setEditing("new"); };
   const setF = (k, v) => setForm((p) => ({ ...p, [k]: v }));
@@ -331,7 +331,7 @@ function AdminProducts({ products, setProducts, showToast }) {
     setEditing(null); setForm(null); showToast("商品已儲存！");
   };
   const del = (id) => { setProducts((ps) => ps.filter((p) => p.id !== id)); showToast("商品已刪除。"); };
- 
+
   if (editing !== null && form) return (
     <div>
       <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 32 }}>
@@ -385,7 +385,7 @@ function AdminProducts({ products, setProducts, showToast }) {
       </div>
     </div>
   );
- 
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32 }}>
@@ -412,7 +412,7 @@ function AdminProducts({ products, setProducts, showToast }) {
     </div>
   );
 }
- 
+
 // ── ADMIN: Sizes ────────────────────────────────────────────────────────────
 function AdminSizes({ sizes, setSizes, showToast }) {
   const [local, setLocal] = useState(JSON.parse(JSON.stringify(sizes)));
@@ -456,7 +456,7 @@ function AdminSizes({ sizes, setSizes, showToast }) {
     </div>
   );
 }
- 
+
 // ── ADMIN Shell ─────────────────────────────────────────────────────────────
 function Admin({ brand, setBrand, products, setProducts, sizes, setSizes, onPreview }) {
   const [page, setPage] = useState("brand");
@@ -489,7 +489,7 @@ function Admin({ brand, setBrand, products, setProducts, sizes, setSizes, onPrev
     </div>
   );
 }
- 
+
 // ── localStorage 儲存 ───────────────────────────────────────────────────────
 function load(key, fallback) {
   try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
@@ -498,18 +498,18 @@ function load(key, fallback) {
 function save(key, val) {
   try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
 }
- 
+
 // ── ROOT ────────────────────────────────────────────────────────────────────
 export default function App() {
   const [mode, setMode] = useState("admin");
   const [brand, setBrand] = useState(() => load("ba_brand", DEFAULT_BRAND));
   const [products, setProducts] = useState(() => load("ba_products", DEFAULT_PRODUCTS));
   const [sizes, setSizes] = useState(() => load("ba_sizes", DEFAULT_SIZES));
- 
+
   useEffect(() => { save("ba_brand", brand); }, [brand]);
   useEffect(() => { save("ba_products", products); }, [products]);
   useEffect(() => { save("ba_sizes", sizes); }, [sizes]);
- 
+
   return (
     <>
       <style>{CSS}</style>
@@ -527,4 +527,3 @@ export default function App() {
     </>
   );
 }
- 
