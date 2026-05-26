@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
  
 const DEFAULT_BRAND = {
-  name: "BEST ARCHIVE",
-  tagline: "Oversized silhouettes. Washed textures. Underground aesthetics.",
-  description: "BEST ARCHIVE is inspired by vintage street culture, oversized silhouettes, and minimalist underground fashion. Every drop focuses on bold graphics, washed textures, and modern Japanese streetwear aesthetics.",
-  heroImage: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1920&auto=format&fit=crop",
+  name: "SMANS",
+  tagline: "Design by Smans",
+  description: "Design by Smans",
+  heroImage: "https://i.ibb.co/SDbcfKnB/2-D6-AC718-E342-475-A-89-D3-20-A41-A09-EB44.jpg",
   accentColor: "#ffffff",
-  instagram: "https://instagram.com",
-  shopeeStore: "https://shopee.tw",
+  instagram: "https://shopee.tw/product/126270/24345408484/",
+  shopeeStore: "https://shopee.tw/product/126270/24345408484/",
 };
  
 const DEFAULT_SIZES = {
@@ -22,9 +22,8 @@ const DEFAULT_SIZES = {
 };
  
 const DEFAULT_PRODUCTS = [
-  { id: 1, title: "BLACK OVERSIZED TEE",   price: "NT$ 1,280", tag: "BESTSELLER", colors: ["#111111","#ffffff","#334155"], img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop", shopeeUrl: "https://shopee.tw" },
-  { id: 2, title: "VINTAGE STREET SHORTS", price: "NT$ 1,580", tag: "NEW DROP",   colors: ["#78716c","#1c1917"],           img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop", shopeeUrl: "https://shopee.tw" },
-  { id: 3, title: "LIMITED GRAPHIC TEE",   price: "NT$ 1,480", tag: "LIMITED",    colors: ["#ffffff","#d4d4d4"],           img: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?q=80&w=1200&auto=format&fit=crop", shopeeUrl: "https://shopee.tw" },
+  { id: 1, title: "太空貓TEE", price: "NT$ 880", tag: "NEW DROP", colors: [], img: "https://i.ibb.co/SDbcfKnB/2-D6-AC718-E342-475-A-89-D3-20-A41-A09-EB44.jpg", shopeeUrl: "https://shopee.tw/product/126270/24345408484/" },
+  { id: 2, title: "法鬥TEE",   price: "NT$ 880", tag: "NEW DROP", colors: [], img: "https://i.ibb.co/392MJqkN/Chat-GPT-Image-2026-5-23-12-59-05.png",             shopeeUrl: "https://shopee.tw/product/126270/24345408484/" },
 ];
  
 const TAGS = ["BESTSELLER", "NEW DROP", "LIMITED", "SALE", "COMING SOON"];
