@@ -1,4 +1,3 @@
-HELLO TEST 777777
 import { useState, useEffect, useRef } from "react";
  
 const DEFAULT_BRAND = {
